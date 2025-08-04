@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIT - Modern Template</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f8f8;
+        }
+        .hero-background {
+            background-image: url('https://placehold.co/1920x800/2a2a2a/ffffff?text=Hero+Background');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 100%);
+        }
+        .form-card {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #ff8b38;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #e67a2e;
+        }
+        .pricing-card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .pricing-header-dark {
+            background-color: #333;
+            color: white;
+        }
+        .pricing-header-orange {
+            background-color: #ff8b38;
+            color: white;
+        }
+        .pricing-list li {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .pricing-list li:last-child {
+            border-bottom: none;
+        }
+        .triangle-down {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 15px solid #fff; 
+            position: absolute;
+            bottom: -15px; 
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .reflection {
+             transform: scaleY(-1);
+           -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%);
+           mask-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%);
+           opacity: 0.6; 
+        }
+        .move-right {
+            transform: translateX(50%); 
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* New styles for contact and footer */
+        .contact-background {
+            background-color: #2b2b2b;
+        }
+        .contact-form {
+            background-color: #3e3e3e;
+        }
+        .footer-background {
+            background-color: #222222;
+        }
+        .footer-divider {
+            height: 1px;
+            background-color: #333333;
+        }
+
+        /* Specific styles for the contact form inputs to match the image */
+        .contact-input {
+            border-bottom: 1px solid #d1d5db; /* Light gray border */
+            padding: 0.5rem 0.25rem; /* Adjust padding */
+            background-color: transparent; /* Transparent background */
+            color: #4b5563; /* Darker placeholder text */
+        }
+        .contact-input::placeholder {
+            color: #9ca3af; /* Light gray placeholder */
+        }
+        .contact-input:focus {
+            border-color: #ff8b38; /* Orange on focus */
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero-background text-white py-8 relative">
+        <div class="container mx-auto px-4 relative z-10">
+            <nav class="flex justify-between items-center mb-16">
+                <div class="text-3xl font-bold">AX<span class="text-orange-500">IT</span></div>
+                <ul class="hidden md:flex space-x-8 text-lg">
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Features</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">About</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Pricing</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Reviews</a></li>
+                    <li><a href="#" class="hover:text-orange-500 transition-colors">Contact</a></li>
+                </ul>
+                <button class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+
+            <div class="flex flex-col md:flex-row items-center justify-between py-16">
+                <div class="md:w-1/2 text-center md:text-left mb-12 md:mb-0">
+                    <h1 class="text-5xl font-bold mb-6">MODERN AXURE TEMPLATE FOR BEAUTIFUL PROTOTYPES</h1>
+                    <div class="w-20 h-1 bg-orange-500 mx-auto md:mx-0 mb-8"></div>
+                    <p class="text-lg mb-10 leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
+                    </p>
+                    <button class="btn-primary">Download</button>
+                </div>
+
+                <div class="md:w-1/3 w-full form-card rounded-lg p-8 text-gray-800">
+                    <h2 class="text-2xl font-semibold text-center mb-6">
+                        Try Your <span class="text-orange-500">FREE</span> Trial Today
+                    </h2>
+                    <form class="space-y-5">
+                        <div>
+                            
+                            <input type="text" placeholder="Name" class="w-full border-b border-gray-300 py-2 px-0 focus:outline-none focus:border-orange-500 placeholder-gray-400 bg-transparent">
+                        </div>
+                        <div>
+                            
+                            <input type="email" placeholder="Email" class="w-full border-b border-gray-300 py-2 px-0 focus:outline-none focus:border-orange-500 placeholder-gray-400 bg-transparent">
+                        </div>
+                        <div>
+                            
+                            <input type="password" placeholder="Password" class="w-full border-b border-gray-300 py-2 px-0 focus:outline-none focus:border-orange-500 placeholder-gray-400 bg-transparent">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="w-full btn-primary text-xl rounded-md py-4 mt-8">
+                                Get Started
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/3 text-center md:text-left mb-8 md:mb-0">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Tab With Current Content</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
+                </p>
+            </div>
+            
+            <div class="md:w-1/3 mb-8 md:mb-0 flex flex-col items-center relative">
+                
+                <img src="https://artincontext.org/wp-content/uploads/2024/02/cityscape-drawing-12.jpg"
+                    alt="Cityscape"
+                    class="w-full h-auto rounded-lg shadow-md move-right">
+                
+                <img src="https://artincontext.org/wp-content/uploads/2024/02/cityscape-drawing-12.jpg"
+                    alt="Cityscape Reflection"
+                    class="w-full h-auto rounded-lg shadow-md reflection mt-[-2px] move-right">
+            </div>
+            <div class="md:w-1/3 text-center md:text-right">
+                
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">WHY THIS IS AWESOME</h2>
+            <p class="text-gray-600 text-lg mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 flex items-center justify-center rounded-full border-2 border-orange-500 text-orange-500 text-4xl mb-6">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">Awesome Idea</h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 flex items-center justify-center rounded-full border-2 border-orange-500 text-orange-500 text-4xl mb-6">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">Fully Customizable</h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 flex items-center justify-center rounded-full border-2 border-orange-500 text-orange-500 text-4xl mb-6">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-800 mb-3">Unlimited Features</h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">PRICING OPTIONS</h2>
+            <p class="text-gray-600 text-lg mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="pricing-card">
+                    <div class="pricing-header-dark py-6">
+                        <h3 class="text-2xl font-semibold mb-2">Basic</h3>
+                        <p class="text-5xl font-bold">$0</p>
+                        <p class="text-sm uppercase tracking-wide">Free for Life</p>
+                    </div>
+                    <ul class="pricing-list text-gray-700 text-center">
+                        <li>1 GB of Space</li>
+                        <li>10 GB of Bandwidth</li>
+                        <li>3 Websites</li>
+                        <li>Basic Customization</li>
+                        <li>Wordpress Integration</li>
+                        <li>Email Support</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header-orange py-6">
+                        <h3 class="text-2xl font-semibold mb-2">Professional</h3>
+                        <p class="text-5xl font-bold">$19</p>
+                        <p class="text-sm uppercase tracking-wide">Monthly Payment</p>
+                    </div>
+                    <ul class="pricing-list text-gray-700 text-center">
+                        <li>5 GB of Space</li>
+                        <li>50 GB of Bandwidth</li>
+                        <li>10 Websites</li>
+                        <li>Advanced Customization</li>
+                        <li>Wordpress Integration</li>
+                        <li>Premium Support</li>
+                    </ul>
+                </div>
+
+
+                <div class="pricing-card">
+                    <div class="pricing-header-dark py-6">
+                        <h3 class="text-2xl font-semibold mb-2">Enterprise</h3>
+                        <p class="text-5xl font-bold">$70</p>
+                        <p class="text-sm uppercase tracking-wide">Monthly Payment</p>
+                    </div>
+                    <ul class="pricing-list text-gray-700 text-center">
+                        <li>Unlimited Space</li>
+                        <li>Unlimited Bandwidth</li>
+                        <li>Unlimited Websites</li>
+                        <li>Full Customization</li>
+                        <li>Wordpress Integration</li>
+                        <li>24/7 Support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">WHAT OUR CUSTOMERS ARE SAYING</h2>
+            <p class="text-gray-600 text-lg mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div class="bg-white p-8 rounded-lg shadow-md text-left relative pb-10"> 
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo."
+                    </p>
+                    <div class="triangle-down"></div> 
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D" alt="User 1" class="w-16 h-16 rounded-full mr-4">
+                        
+                        
+                        <div>
+
+                            <p class="font-semibold text-gray-800">John Doe</p>
+                            <p class="text-sm text-gray-500">CEO of Company</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bg-white p-8 rounded-lg shadow-md text-left relative pb-10"> 
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo."
+                    </p>
+                    <div class="triangle-down"></div> 
+                    <div class="flex items-center">
+                        <img src="https://media.istockphoto.com/id/1320811419/photo/head-shot-portrait-of-confident-successful-smiling-indian-businesswoman.jpg?s=612x612&w=0&k=20&c=bCUTB8vd8MnzZFIq-x645-SmLNk2sQzOvOvWCPGDfZ4=" alt="User 2" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Jane Smith</p>
+                            <p class="text-sm text-gray-500">Designer</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="bg-white p-8 rounded-lg shadow-md text-left relative pb-10"> 
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo."
+                    </p>
+                    <div class="triangle-down"></div> 
+                    <div class="flex items-center">
+                        <img src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?semt=ais_hybrid&w=740&q=80" alt="User 3" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <p class="font-semibold text-gray-800">Peter Jones</p>
+                            <p class="text-sm text-gray-500">Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-20 bg-gray-100 text-gray-800 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-4">CONTACT US</h2>
+            <div class="w-20 h-1 bg-orange-500 mx-auto mb-8"></div>
+            <p class="text-lg mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <form class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="md:col-span-1">
+                    <input type="text" placeholder="Name" class="w-full contact-input mb-8 md:mb-0">
+                    <input type="email" placeholder="Email" class="w-full contact-input mb-8 md:mb-0">
+                    <input type="text" placeholder="Subject" class="w-full contact-input">
+                </div>
+                <div class="md:col-span-1">
+                    <textarea placeholder="Message" rows="8" class="w-full contact-input"></textarea>
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" class="btn-primary text-xl px-10 py-3 rounded-md">Send Message</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <p>&copy; 2025 AXIT. All Rights Reserved.</p>
+            </div>
+            <div class="flex space-x-6 text-2xl">
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-pinterest"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
