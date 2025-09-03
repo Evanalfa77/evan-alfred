@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <main class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg space-y-6">
+        <h1 class="text-3xl font-bold text-center text-gray-800">User Data Manager</h1>
+
+        <form id="userDataForm" class="space-y-4">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
+                <input type="text" id="name" placeholder="Enter name" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+
+            <div>
+                <label for="age" class="block text-sm font-medium text-gray-700">Age:</label>
+                <input type="number" id="age" placeholder="Enter age" required
+                       class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md font-semibold hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Add User
+            </button>
+        </form>
+
+        <section class="border-t pt-6 border-gray-200">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Added Users:</h2>
+            <div id="displayArea" class="space-y-4">
+                <p id="noDataMessage" class="text-gray-500 text-sm text-center">No users added yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        
+        const usersArray = [];
+
+        
+        const form = document.getElementById('userDataForm');
+        const displayArea = document.getElementById('displayArea');
+        const noDataMessage = document.getElementById('noDataMessage');
+
+        
+        function renderUsers() {
+            
+            while (displayArea.children.length > 1) {
+                displayArea.removeChild(displayArea.lastChild);
+            }
+
+            if (usersArray.length === 0) {
+                noDataMessage.classList.remove('hidden');
+            } else {
+                noDataMessage.classList.add('hidden');
+                
+                
+                usersArray.forEach(user => {
+                    const userDiv = document.createElement('div');
+                    userDiv.classList.add('bg-blue-50', 'p-4', 'rounded-lg', 'border', 'border-blue-200', 'flex', 'flex-col', 'space-y-1');
+                    userDiv.innerHTML = `
+                        <p class="text-gray-900"><span class="font-medium text-blue-800">Name:</span> ${user.name}</p>
+                        <p class="text-gray-900"><span class="font-medium text-blue-800">Age:</span> ${user.age}</p>
+                    `;
+                    displayArea.appendChild(userDiv);
+                });
+            }
+        }
+
+       
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            
+            const nameInput = document.getElementById('name');
+            const ageInput = document.getElementById('age');
+
+            const newName = nameInput.value;
+            const newAge = ageInput.value;
+
+         
+            const newUser = {
+                name: newName,
+                age: newAge
+            };
+
+            
+            usersArray.push(newUser);
+
+            console.log(usersArray);
+
+            
+            renderUsers();
+
+            
+            nameInput.value = '';
+            ageInput.value = '';
+        });
+
+        
+        renderUsers();
+    </script>
+</body>
+</html>
