@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Categories</title>
+  <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2eR+0sP+4k/c/t+6f5zJ28yJ45S3z8S2z+Q=" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .navbar-top {
+            background-color: white;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .navbar-main {
+            background-color: white;
+        }
+
+        .category-filter {
+            background-color: white;
+            border-radius: 0.5rem;
+        }
+
+        .product-card {
+            border: 1px solid #e9ecef;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            background-color: #f1f1f1;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        .badge-hot {
+            background-color: #ff4500;
+        }
+
+        .badge-discount {
+            background-color: #dc3545;
+        }
+
+        .price-old {
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .color-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .list-group-item.active {
+            background-color: #e9ecef;
+            color: #212529;
+            font-weight: bold;
+        }
+
+        .list-group-item {
+            cursor: pointer;
+        }
+        
+        /* Custom scrollbar for Brands list */
+        .brands-list {
+            max-height: 250px; /* Set a maximum height to enable scrolling */
+            overflow-y: auto; /* Enable vertical scrolling */
+        }
+
+        .brands-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .brands-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .brands-list::-webkit-scrollbar-thumb {
+            background: #000;
+            border-radius: 10px;
+        }
+
+        .brands-list::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Custom styles for pagination to match the image */
+        .custom-pagination .page-item {
+            margin: 0 5px;
+        }
+        
+        .custom-pagination .page-item .page-link {
+            border-radius: 50% !important;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            color: #212529;
+            background-color: #e9ecef;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .custom-pagination .page-item .page-link:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .custom-pagination .page-item.active .page-link {
+            background-color: #000;
+            color: #fff;
+        }
+        /* Product card hover effects */
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image img {
+            transition: transform 0.3s ease;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        .product-icons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 10;
+        }
+        .product-card:hover .product-icons {
+            opacity: 1;
+            visibility: visible;
+        }
+        .product-icons .icon-btn {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: #212529;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .product-icons .icon-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+   
+    <header class="py-3 bg-white border-b shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+                
+            
+                <div class="flex items-center space-x-4">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/themes/merto/images/logo.png" class="w-24 mb-3" alt="Merto Logo">
+                    <div class="hidden lg:block text-sm text-gray-500">
+                        <p class="mb-0">Contact us 24/7</p>
+                        <p class="mb-0 font-medium">(+92) 3942 7879</p>
+                    </div>
+                </div>
+
+            
+                <div class="flex flex-grow w-full lg:w-auto mx-0 lg:mx-4">
+                    <div class="flex w-full border border-gray-300 rounded-lg overflow-hidden">
+                        <select class="px-3 py-2 text-sm text-gray-600 bg-gray-100 border-r-0 focus:outline-none rounded-none">
+                            <option selected>All Categories</option>
+                            <option>Electronics</option>
+                            <option>Fashion</option>
+                            <option>Home Appliances</option>
+                        </select>
+                        <input type="search" class="flex-grow px-4 py-2 text-gray-800 focus:outline-none rounded-none" placeholder="Search...">
+                        <button class="bg-gray-800 text-white px-4 py-2 hover:bg-gray-700 transition duration-200">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+            
+                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                    <div class="relative group">
+                        <a href="#" class="flex items-center hover:text-gray-900 transition">
+                            <img src="https://flagcdn.com/16x12/us.png" alt="English flag" class="mr-1">English
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <div class="relative group">
+                        <a href="#" class="flex items-center hover:text-gray-900 transition">
+                            USD
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="flex items-center hover:text-gray-900 transition">
+                        <i class="fas fa-user-circle text-lg mr-1"></i>
+                        <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="relative hover:text-gray-900 transition">
+                        <i class="far fa-heart text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                    <a href="#" class="relative hover:text-gray-900 transition">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    </div>
+  </div>
+    <nav class="bg-white shadow-sm">
+        <div class="main-container px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button class="flex items-center space-x-2 text-sm font-semibold text-gray-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <span>SHOP BY CATEGORIES</span>
+                </button>
+                <a href="metro.html" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Homepages</a>
+                <a href="Categories.html" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Categories</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Products</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Pages</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">About us</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Blog</a>
+                <a href="#" class="text-sm font-semibold text-gray-800">
+                    <svg class="w-5 h-5 text-yellow-500 inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14.5a6.5 6.5 0 110-13 6.5 6.5 0 010 13zM10 5a.5.5 0 01.5.5v5a.5.5 0 01-1 0v-5A.5.5 0 0110 5z"></path></svg>
+                    <span>Best Discount</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <span>Recently viewed</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Page</li>
+            </ol>
+        </nav>
+
+        <h1 class="h3 fw-bold mb-4">Shop</h1>
+
+        <!-- Category Buttons -->
+        <div class="d-flex flex-wrap gap-2 mb-4">
+            <button type="button" class="btn btn-outline-secondary rounded-pill">Autopart</button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">Beauty & Health</button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">Electronic</button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">Fashion</button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">Game Accessories</button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">Home & Decor</button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">Laptop & Computer</button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">Phone & Tablet</button>
+            <button type="button" class="btn btn-outline-secondary rounded-pill">TV, Audio - Video</button>
+        </div>
+
+        <!-- Product Listing Section -->
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3">
+                <div class="category-filter p-4 mb-4">
+                    <h5 class="fw-bold mb-3">Colors</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: black;"></span>
+                                Black
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">93</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #007bff;"></span>
+                                Blue
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">8</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #800080;"></span>
+                                Purple
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">26</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #800000;"></span>
+                                Burgundy
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">25</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #ffc0cb;"></span>
+                                Cool Pink
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">21</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #e6e6fa;"></span>
+                                Deep Purple
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">15</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #808080;"></span>
+                                Grey
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">25</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #008000;"></span>
+                                Green
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">23</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #ffffe0;"></span>
+                                Light Brown
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">4</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #a0522d;"></span>
+                                Light Navy
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">6</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #708090;"></span>
+                                Navy
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">10</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #ffa500;"></span>
+                                Orange
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">15</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #ffc0cb;"></span>
+                                Pink
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">4</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #800080;"></span>
+                                Purple
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">3</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #ff0000;"></span>
+                                Red
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">15</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #a9a9a9;"></span>
+                                Rosewood
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">3</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: #ffffe0;"></span>
+                                True Cotton
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">1</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: white;"></span>
+                                White
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">34</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="d-flex align-items-center">
+                                <span class="color-circle" style="background-color: yellow;"></span>
+                                Yellow
+                            </span>
+                            <span class="badge bg-light text-dark rounded-pill">9</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Brands Filter -->
+                <div class="category-filter p-4 mb-4">
+                    <h5 class="fw-bold mb-3">Brands</h5>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search brands..." aria-label="Search brands">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    </div>
+                    <!-- Added a new container for the Brands list with a custom class -->
+                    <ul class="list-group list-group-flush brands-list">
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="amazonCheckbox">Amazon (0)</label>
+                                <input class="form-check-input" type="checkbox" value="" id="amazonCheckbox">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="appleCheckbox">Apple (8)</label>
+                                <input class="form-check-input" type="checkbox" value="" id="appleCheckbox">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="ashleyCheckbox">Ashley (3)</label>
+                                <input class="form-check-input" type="checkbox" value="" id="ashleyCheckbox">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="asusCheckbox">Asus (3)</label>
+                                <input class="form-check-input" type="checkbox" value="" id="asusCheckbox">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="tissotCheckbox">Tissot (5)</label>
+                                <input class="form-check-input" type="checkbox" value="" id="tissotCheckbox">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="caraveeCheckbox">Caravee (7)</label>
+                                <input class="form-check-input" type="checkbox" value="" id="caraveeCheckbox">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="cliniqueCheckbox">Clinique (4)</label>
+                                <input class="form-check-input" type="checkbox" value="" id="cliniqueCheckbox">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Price Filter -->
+                <div class="category-filter p-4 mb-4">
+                    <h5 class="fw-bold mb-3">Price</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <label class="form-check-label" for="priceRange1">$0 - $100</label>
+                                <input class="form-check-input" type="checkbox" value="" id="priceRange1">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <label class="form-check-label" for="priceRange2">$100 - $200</label>
+                                <input class="form-check-input" type="checkbox" value="" id="priceRange2">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <label class="form-check-label" for="priceRange3">$200 - $500</label>
+                                <input class="form-check-input" type="checkbox" value="" id="priceRange3">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <label class="form-check-label" for="priceRange4">$500 - $800</label>
+                                <input class="form-check-input" type="checkbox" value="" id="priceRange4">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check">
+                                <label class="form-check-label" for="priceRange5">$800+</label>
+                                <input class="form-check-input" type="checkbox" value="" id="priceRange5">
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="input-group my-3">
+                        <input type="text" class="form-control" placeholder="Min" aria-label="Min Price">
+                        <span class="input-group-text">-</span>
+                        <input type="text" class="form-control" placeholder="Max" aria-label="Max Price">
+                    </div>
+                    <button class="btn btn-dark w-100">FILTER</button>
+                </div>
+                <!-- Size Filter -->
+                <div class="category-filter p-4 mb-4">
+                    <h5 class="fw-bold mb-3">Size</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeUS8">US 8</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeUS8">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeUS9">US 9</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeUS9">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeUS10">US 10</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeUS10">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeUS11">US 11</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeUS11">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeUS12">US 12</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeUS12">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeXS">XS</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeXS">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeS">S</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeS">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeM">M</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeM">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeL">L</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeL">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="sizeXL">XL</label>
+                                <input class="form-check-input" type="checkbox" value="" id="sizeXL">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="size2XL">2XL</label>
+                                <input class="form-check-input" type="checkbox" value="" id="size2XL">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="size3XL">3XL</label>
+                                <input class="form-check-input" type="checkbox" value="" id="size3XL">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Storage Capacity Filter -->
+                <div class="category-filter p-4 mb-4">
+                    <h5 class="fw-bold mb-3">Storage Capacity</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="storage128GB">128GB</label>
+                                <input class="form-check-input" type="checkbox" value="" id="storage128GB">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="storage64GB">64GB</label>
+                                <input class="form-check-input" type="checkbox" value="" id="storage64GB">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Customer Rating Filter -->
+                <div class="category-filter p-4 mb-4">
+                    <h5 class="fw-bold mb-3">Customer Rating</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="rating5">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i> (80)
+                                </label>
+                                <input class="form-check-input" type="checkbox" value="" id="rating5">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="rating4">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star text-muted"></i> (40)
+                                </label>
+                                <input class="form-check-input" type="checkbox" value="" id="rating4">
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="form-check d-flex justify-content-between align-items-center">
+                                <label class="form-check-label" for="rating3">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star text-muted"></i>
+                                    <i class="bi bi-star text-muted"></i> (4)
+                                </label>
+                                <input class="form-check-input" type="checkbox" value="" id="rating3">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <small class="text-muted">Showing 1-28 of 210 results</small>
+                    <div class="d-flex align-items-center">
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="checkbox" id="onSaleCheckbox">
+                            <label class="form-check-label" for="onSaleCheckbox">
+                                Show only products on sale
+                            </label>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <small class="me-2">Show:</small>
+                            <a href="#" class="me-2 text-decoration-none">28</a>
+                            <a href="#" class="me-2 text-decoration-none">56</a>
+                            <a href="#" class="me-2 text-decoration-none">84</a>
+                        </div>
+                        <div class="ms-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-light dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sort by latest
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                                    <li><a class="dropdown-item" href="#">Best selling</a></li>
+                                    <li><a class="dropdown-item" href="#">Price: low to high</a></li>
+                                    <li><a class="dropdown-item" href="#">Price: high to low</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <i class="bi bi-grid-fill ms-3 h5 mb-0 text-muted"></i>
+                        <i class="bi bi-list-task ms-2 h5 mb-0 text-muted"></i>
+                    </div>
+                </div>
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                    <!-- Product Card 1 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image position-relative">
+                                <span class="badge badge-hot position-absolute top-0 start-0 m-2">HOT</span>
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-5-300x300.jpg" class="card-img-top" alt="Nike Air Max Sneaker">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Nike Air Max Sneaker</h6>
+                                <p class="card-text text-muted">Unisex System TM Sneaker Shoes</p>
+                                <p class="card-text fw-bold">$148</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 2 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-30-5-300x300.jpg" class="card-img-top" alt="Apple MacBook Air">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Apple MacBook Air with Apple MI Chip, 13.3 inch...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$572</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 3 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image position-relative">
+                                <span class="badge badge-discount position-absolute top-0 start-0 m-2">-20%</span>
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/cosmetics-34-300x300.jpg" class="card-img-top" alt="KUORA Tinted Facial Sunscreen">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">KUORA Tinted Facial Sunscreen SPF 10+...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$14</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Card 4 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-30-6-300x300.jpg" class="card-img-top" alt="Laptop Asus Vivobook">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Laptop Asus Vivobook...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$999 <small class="price-old">$1098</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 5 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-9-300x300.jpg" class="card-img-top" alt="100% UV Protected Sunglasses">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">100% UV Protected Sunglasses</h6>
+                                <p class="card-text text-muted">For Men</p>
+                                <p class="card-text fw-bold">$123</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 6 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-6-300x300.jpg" class="card-img-top" alt="LV Women Leather Accent">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">LV Women Leather Accent Denim Mini Skirt</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$1,390</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 7 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-16-300x300.jpg" class="card-img-top" alt="A Different Christmas Knit">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">A Different Christmas Knit Holiday Sweater</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$50 – $65</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 8 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-1-300x300.jpg" class="card-img-top" alt="MacBook Air with M3 chip">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">MacBook Air with M3 chip, 16GB Unified Memory, 1TB SSD...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$1,399</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 9 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image position-relative">
+                                <span class="badge badge-discount position-absolute top-0 start-0 m-2">-4%</span>
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-14-2-300x300.jpg" class="card-img-top" alt="Apple Watch Series 9 GPS">
+                                
+                                <div class="product-icons">
+
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                             <a href="apple.html" class="text-sm text-gray-600 hover:text-gray-900 font-medium"> Apple Watch Series 9 GPS 45mm Aluminium Case with...</a>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$890 <small class="price-old">$950</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 10 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image position-relative">
+                                <span class="badge badge-hot position-absolute top-0 start-0 m-2">HOT</span>
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/furniture-7-300x300.jpg" class="card-img-top" alt="Milo Brazz And Black Metal">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Milo Brazz And Black Metal Lamp 100cm x 30cm</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$82</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 11 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/11-300x300.jpg" class="card-img-top" alt="Ipad Mini 6 A15 bionic chip">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Ipad Mini 6 A15 bionic chip, 8.3 inch, 6th Gen, Wi-Fi...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$450 – $650</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 12 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-1-300x300.jpg" class="card-img-top" alt="Winter New Jacket Loose Retro">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Winter New Jacket Loose Retro American Campus...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$160</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 13 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/furniture-14-300x300.jpg" class="card-img-top" alt="Light Luxury Wooden Leather Lounge Chair">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Light Luxury Wooden Leather Lounge Chair Home Living...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$179</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 14 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-3-300x300.jpg" class="card-img-top" alt="Winter Hat with Top Ball">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Winter Hat with Top Ball Custom Design</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$17</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 15 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-2-300x300.jpg" class="card-img-top" alt="LV Red Leather">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">LV Red Leather Accent Denim Mini Skirt</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$184</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 16 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-19-300x300.jpg" class="card-img-top" alt="New York Yankees MLB League">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">New York Yankees MLB League Essential T-shirt</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$59 – $63</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 17 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image position-relative">
+                                <span class="badge badge-discount position-absolute top-0 start-0 m-2">-15%</span>
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/automotive-11-300x300.jpg" class="card-img-top" alt="IOOUS 34 Low Profile">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">IOOUS 34 Low Profile Hydraulic Trolley</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$767 <small class="price-old">$898</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 18 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/furniture-17-300x300.jpg" class="card-img-top" alt="Howard Chandelier">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Howard Chandelier Six Long Arms - Gunmetal</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$745</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 19 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-51-300x300.jpg" class="card-img-top" alt="OPPO A79 Pro 5G">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">OPPO A79 Pro 5G - 8000 mah Battery, 8GB Ram, 128GB...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$314</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 20 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image position-relative">
+                                <span class="badge badge-discount position-absolute top-0 start-0 m-2">-23%</span>
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/furniture-6-300x300.jpg" class="card-img-top" alt="14-inch Fashion Simplicity">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">14-inch Fashion Simplicity Quality Wall Clock, Home...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$50 <small class="price-old">$65</small></p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 21 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-8-300x300.jpg" class="card-img-top" alt="A Different Christmas Knit">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">A Different Christmas Knit Holiday Sweater</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$50 – $65</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 22 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image">
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-9-300x300.jpg" class="card-img-top" alt="MacBook Air with M3 chip">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">MacBook Air with M3 chip, 16GB Unified Memory, 1TB SSD...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$1,399</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Product Card 23 -->
+                    <div class="col">
+                        <div class="card h-100 product-card">
+                            <div class="product-image position-relative">
+                                <span class="badge badge-discount position-absolute top-0 start-0 m-2">-4%</span>
+                                <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/cosmetics-33-300x300.jpg" class="card-img-top" alt="Apple Watch Series 9 GPS">
+                                <div class="product-icons">
+                                    <button class="icon-btn"><i class="bi bi-heart"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-arrows-fullscreen"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-search"></i></button>
+                                    <button class="icon-btn"><i class="bi bi-cart"></i></button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title fw-bold">Apple Watch Series 9 GPS 45mm Aluminium Case with...</h6>
+                                <p class="card-text text-muted">...</p>
+                                <p class="card-text fw-bold">$890 <small class="price-old">$950</small></p>
+                            </div>
+                        </div>
+                    </div>
+                 
+                
+                <!-- Pagination -->
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination custom-pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Footer Column 1 -->
+            <div>
+                <a class="text-3xl font-bold text-white mb-4 block" href="#">Merto</a>
+                <div class="flex items-center mb-2">
+                    <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                    <p class="text-sm text-gray-400">29 St. 2nd Ave, Miami Florida 39310, United States</p>
+                </div>
+                <div class="flex items-center mb-2">
+                    <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                    <p class="text-sm text-gray-400">info@example.com</p>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-phone mr-2 text-gray-400"></i>
+                    <p class="text-sm text-gray-400">(+92) 3942 7679</p>
+                </div>
+            </div>
+
+            <!-- Footer Column 2 - Shopping -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">SHOPPING</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Wishlist</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Shop by Brand</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Offers</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 3 - Information -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">INFORMATION</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Shipping & Returns</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">About us</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Help</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 4 - Account -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">ACCOUNT</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Cart</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">My account</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">My orders</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Wishlist</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Affiliate Program</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 5 - Let's keep in touch -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">Let's keep in touch</h4>
+                <p class="text-sm text-gray-400 mb-4">enter your email address</p>
+                <div class="flex">
+                    <input type="email" placeholder="enter your email address" class="bg-gray-700 text-white rounded-l-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-600 w-full">
+                    <button class="bg-gray-600 text-white p-2 rounded-r-lg hover:bg-gray-500 transition-colors">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-white hover:text-gray-400 transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-gray-400 transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-gray-400 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-gray-400 transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Footer -->
+        <div class="container mx-auto mt-12 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+                <div class="flex items-center flex-col md:flex-row">
+                    <i class="fas fa-question-circle text-2xl mr-2"></i>
+                    <div class="text-center md:text-left">
+                        <p class="font-semibold">Didn't find what you were looking for?</p>
+                        <p>Contact us</p>
+                    </div>
+                </div>
+                <div class="flex items-center flex-col md:flex-row">
+                    <i class="fas fa-headset text-2xl mr-2"></i>
+                    <div class="text-center md:text-left">
+                        <p class="font-semibold">How can we help you today?</p>
+                        <p>Help center</p>
+                    </div>
+                </div>
+                <div class="flex items-center flex-col md:flex-row">
+                    <i class="fas fa-comment-dots text-2xl mr-2"></i>
+                    <div class="text-center md:text-left">
+                        <p class="font-semibold">We'd love to hear what you think!</p>
+                        <p>Give Feedback</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="bg-gray-900 text-gray-400 py-4 text-center text-xs">
+        <p>Copyright © Merto. All Rights Reserved</p>
+        <div class="flex justify-center mt-2 space-x-2">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=PayPal" alt="PayPal">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=Visa" alt="Visa">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=Mastercard" alt="Mastercard">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=JCB" alt="JCB">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=Discover" alt="Discover">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=American" alt="American Express">
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

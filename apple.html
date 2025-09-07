@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Product Page</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .product-image-grid {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 16px;
+        }
+        
+        .main-image-container {
+            position: relative;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+        .main-image-container img {
+            transition: transform 0.3s ease-in-out;
+            pointer-events: none;
+        }
+        .magnifier {
+            position: absolute;
+            width: 150px; 
+            height: 150px; 
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            cursor: crosshair;
+            background-repeat: no-repeat;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 99;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button.active {
+            border-bottom-color: black;
+            color: black;
+        }
+        
+        .related-product-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .related-product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .owl-carousel .owl-nav button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8) !important;
+            border-radius: 50% !important;
+            font-size: 24px !important;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.2s ease;
+        }
+        .owl-carousel .owl-nav button:hover {
+            background: rgba(255, 255, 255, 1) !important;
+        }
+        .owl-carousel .owl-nav button.owl-prev {
+            left: -20px;
+        }
+        .owl-carousel .owl-nav button.owl-next {
+            right: -20px;
+        }
+        .owl-carousel .owl-nav button span {
+            font-size: 2rem !important;
+            color: #4a4a4a !important;
+            line-height: 1;
+        }
+        .image-actions {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        .product-images-wrapper:hover .image-actions {
+            opacity: 1;
+            visibility: visible;
+        }
+        .action-button {
+            background-color: white;
+            padding: 8px;
+            border-radius: 9999px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .action-button:hover {
+            background-color: #e5e7eb;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+
+    <header class="py-3 bg-white border-b shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+                
+            
+                <div class="flex items-center space-x-4">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/themes/merto/images/logo.png" class="w-24 mb-3" alt="Merto Logo">
+                    <div class="hidden lg:block text-sm text-gray-500">
+                        <p class="mb-0">Contact us 24/7</p>
+                        <p class="mb-0 font-medium">(+92) 3942 7879</p>
+                    </div>
+                </div>
+
+            
+                <div class="flex flex-grow w-full lg:w-auto mx-0 lg:mx-4">
+                    <div class="flex w-full border border-gray-300 rounded-lg overflow-hidden">
+                        <select class="px-3 py-2 text-sm text-gray-600 bg-gray-100 border-r-0 focus:outline-none rounded-none">
+                            <option selected>All Categories</option>
+                            <option>Electronics</option>
+                            <option>Fashion</option>
+                            <option>Home Appliances</option>
+                        </select>
+                        <input type="search" class="flex-grow px-4 py-2 text-gray-800 focus:outline-none rounded-none" placeholder="Search...">
+                        <button class="bg-gray-800 text-white px-4 py-2 hover:bg-gray-700 transition duration-200">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+            
+                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                    <div class="relative group">
+                        <a href="#" class="flex items-center hover:text-gray-900 transition">
+                            <img src="https://flagcdn.com/16x12/us.png" alt="English flag" class="mr-1">English
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <div class="relative group">
+                        <a href="#" class="flex items-center hover:text-gray-900 transition">
+                            USD
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="flex items-center hover:text-gray-900 transition">
+                        <i class="fas fa-user-circle text-lg mr-1"></i>
+                        <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="relative hover:text-gray-900 transition">
+                        <i class="far fa-heart text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                    <a href="#" class="relative hover:text-gray-900 transition">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    </div>
+  </div>
+    <nav class="bg-white shadow-sm">
+        <div class="main-container px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button class="flex items-center space-x-2 text-sm font-semibold text-gray-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <span>SHOP BY CATEGORIES</span>
+                </button>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Homepages</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Categories</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Products</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Pages</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">About us</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Blog</a>
+                <a href="#" class="text-sm font-semibold text-gray-800">
+                    <svg class="w-5 h-5 text-yellow-500 inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14.5a6.5 6.5 0 110-13 6.5 6.5 0 010 13zM10 5a.5.5 0 01.5.5v5a.5.5 0 01-1 0v-5A.5.5 0 0110 5z"></path></svg>
+                    <span>Best Discount</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <span>Recently viewed</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+        </div>
+    </nav>
+
+    
+    <main class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+            
+            <div class="product-images-wrapper">
+                <div class="product-image-grid">
+                    <div class="flex flex-col space-y-4">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-14-2.jpg" data-main-image="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-14-2.jpg" alt="Thumbnail 1" class="thumbnail-image rounded-lg border-2 border-gray-300 cursor-pointer hover:border-blue-500 transition">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-14-300x300.jpg" data-main-image="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-14-300x300.jpg" alt="Thumbnail 2" class="thumbnail-image rounded-lg border-2 border-gray-300 cursor-pointer hover:border-blue-500 transition">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-15-2-300x300.jpg" data-main-image="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-15-2-300x300.jpg" alt="Thumbnail 3" class="thumbnail-image rounded-lg border-2 border-gray-300 cursor-pointer hover:border-blue-500 transition">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-16-300x300.jpg" data-main-image="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-16-300x300.jpg" alt="Thumbnail 4" class="thumbnail-image rounded-lg border-2 border-gray-300 cursor-pointer hover:border-blue-500 transition">
+                    </div>
+                    <div id="mainImageContainer" class="main-image-container">
+                        <img id="mainProductImage" src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-14-2.jpg" alt="Main Product Image" class="w-full rounded-lg shadow-md">
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full">-5%</span>
+                        
+                        <div class="image-actions">
+                            <button class="action-button"><i class="fas fa-heart"></i></button>
+                            <button class="action-button"><i class="fas fa-compress-alt"></i></button>
+                            <button class="action-button"><i class="fas fa-search-plus"></i></button>
+                            <button class="action-button"><i class="fas fa-shopping-cart"></i></button>
+                        </div>
+                        <div id="magnifier" class="magnifier rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div>
+                <h1 class="text-4xl font-bold mb-2">Apple Watch Series 9 GPS 45mm, Aluminum Case with Sport Band</h1>
+                <div class="flex items-center mb-4 text-sm text-gray-600">
+                    <div class="text-yellow-400">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="ml-2">4.50 (2 reviews)</span>
+                    <span class="mx-2">|</span>
+                    <a href="#" class="text-blue-500 hover:underline">Write a review</a>
+                </div>
+                
+                <div class="space-y-2 mb-6 text-sm text-gray-700">
+                    <p><i class="fas fa-check-circle text-green-500 mr-2"></i>WatchOS</p>
+                    <p><i class="fas fa-check-circle text-green-500 mr-2"></i>Memory 32 GB</p>
+                    <p><i class="fas fa-check-circle text-green-500 mr-2"></i>Battery Lithium</p>
+                </div>
+
+                <div class="mb-6 flex items-baseline space-x-2">
+                    <span class="text-3xl font-bold text-gray-900">$890</span>
+                    <span class="text-lg text-gray-400 line-through">$950</span>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-green-600 font-semibold mb-2">In stock</p>
+                    <div class="flex items-center space-x-2 text-xs">
+                        <span class="bg-red-500 text-white px-2 py-1 rounded">844</span>
+                        <span class="bg-gray-300 text-gray-800 px-2 py-1 rounded">03</span>
+                        <span class="bg-gray-300 text-gray-800 px-2 py-1 rounded">32</span>
+                        <span class="bg-gray-300 text-gray-800 px-2 py-1 rounded">41</span>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="font-medium mb-2">Color:</p>
+                    <div class="flex space-x-2">
+                        <div class="w-10 h-10 border-2 border-black rounded-full bg-gray-900 cursor-pointer transition transform hover:scale-110"></div>
+                        <div class="w-10 h-10 border rounded-full bg-yellow-600 cursor-pointer transition transform hover:scale-110"></div>
+                        <div class="w-10 h-10 border rounded-full bg-blue-600 cursor-pointer transition transform hover:scale-110"></div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="flex items-center border rounded-lg overflow-hidden">
+                        <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 transition">-</button>
+                        <span class="px-4">1</span>
+                        <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 transition">+</button>
+                    </div>
+                    <button class="bg-gray-800 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-700 transition flex-grow">
+                        <i class="fas fa-shopping-cart mr-2"></i>Add to cart
+                    </button>
+                    <button class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-500 transition flex-grow">Buy Now</button>
+                </div>
+                
+                <div class="mt-8 p-4 bg-green-100 rounded-lg shadow-inner">
+                    <h3 class="font-semibold text-lg text-green-700">Special offer</h3>
+                    <ul class="text-sm text-green-800 mt-2 space-y-2">
+                        <li class="flex items-center"><i class="fas fa-tag mr-2"></i>10% off, maximum $20 when paying with PAYPAL</li>
+                        <li class="flex items-center"><i class="fas fa-tag mr-2"></i>50% off or More iPad Cases, Covers & Keyboard Folios</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+       
+        <div class="mt-16">
+            <div class="flex border-b border-gray-300 mb-6">
+                <button class="tab-button text-lg font-semibold py-3 px-6 border-b-2 border-transparent hover:border-gray-500 transition-colors" data-tab="description">Description</button>
+                <button class="tab-button text-lg font-semibold py-3 px-6 border-b-2 border-transparent hover:border-gray-500 transition-colors" data-tab="specifications">Specifications</button>
+                <button class="tab-button text-lg font-semibold py-3 px-6 border-b-2 border-transparent hover:border-gray-500 transition-colors" data-tab="reviews">Reviews (2)</button>
+            </div>
+
+            <div id="description" class="tab-content p-4">
+                <div class="flex flex-col md:flex-row items-center md:space-x-8 mb-8">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/product-detail-1.png" alt="iPad Pro M2 Chip" class="w-full md:w-1/2 rounded-lg shadow-md mb-4 md:mb-0">
+                    <div class="md:w-1/2">
+                        <h2 class="text-4xl font-bold mb-2">iPad Pro</h2>
+                        <h3 class="text-2xl font-semibold mb-4 text-gray-600">Supercharged by <span class="font-bold text-gray-900">M2</span></h3>
+                        <p class="text-gray-600 leading-relaxed">Astonishing performance. Incredibly advanced displays. Superfast wireless connectivity. Next-level Apple Pencil capabilities. Powerful new features in iPadOS. The ultimate iPad experience.</p>
+                        <button class="mt-4 bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-800 transition">WATCH THE FILM</button>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row-reverse items-center md:space-x-8 mb-8">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/product-detail-3-1.png" alt="Apple Pencil" class="w-full md:w-1/2 rounded-lg shadow-md mb-4 md:mb-0">
+                    <div class="md:w-1/2">
+                        <h2 class="text-4xl font-bold mb-2">Apple Pencil</h2>
+                        <p class="text-gray-600 leading-relaxed">With the power of Apple Pencil (2nd generation), iPad Pro transforms into an immersive drawing canvas and the world's best note-taking device. It sets the standard for how drawing, marking up documents, and even filling in text fields should feel — intuitive, precise, and magical.</p>
+                        <button class="mt-4 bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-gray-800 transition">LEARN MORE ABOUT APPLE PENCIL</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="specifications" class="tab-content p-4">
+                <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/product-detail-2.png" alt="M2 Chip Diagram" class="w-full md:w-1/2 rounded-lg shadow-md mb-4 md:mb-0">
+                    <div class="md:w-1/2">
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="text-2xl font-bold">8-core</h3>
+                                <p class="text-gray-600">CPU</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">10-core</h3>
+                                <p class="text-gray-600">GPU</p>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold">16-core</h3>
+                                <p class="text-gray-600">Neural Engine</p>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-gray-600 leading-relaxed">A complete movie studio in your hands. The high performance media engine on M2 accelerates ProRes encode and decode. So you can convert video projects to ProRes up to 3x faster than before.
+                        <br><br>ProRes video capture. Now you can capture ProRes video using the image signal processor in M2 and advanced cameras on iPad Pro. Five studio-quality microphones and four‑speaker audio with support for Dolby Atmos let you record and deliver theater-like sound. And with Final Cut Pro for iPad, you can capture in ProRes and get the highest video quality with amazing real-time performance for tasks like multistream editing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reviews" class="tab-content p-4">
+                <h3 class="text-2xl font-bold mb-4">Customer Reviews</h3>
+                <div class="space-y-6">
+                   
+                    <div class="border-b pb-4">
+                        <div class="flex items-center mb-2">
+                            <span class="font-semibold mr-2">John Doe</span>
+                            <div class="text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"Fantastic product! The build quality and performance are top-notch. I highly recommend it."</p>
+                        <p class="text-xs text-gray-400 mt-2">Reviewed on 2024-05-20</p>
+                    </div>
+                    
+                    <div class="border-b pb-4">
+                        <div class="flex items-center mb-2">
+                            <span class="font-semibold mr-2">Jane Smith</span>
+                            <div class="text-yellow-400 text-sm">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">"Great features, but the battery life could be a little better. Overall, a solid purchase."</p>
+                        <p class="text-xs text-gray-400 mt-2">Reviewed on 2024-05-25</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="mt-16">
+            <h2 class="text-2xl font-bold mb-6">Related products</h2>
+            <div class="owl-carousel owl-theme">
+                
+                <div class="related-product-card bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-37-300x300.jpg" alt="PlayStation 5" class="w-40 h-40 object-cover mb-4">
+                    <p class="text-sm text-gray-500 mb-1">PlayStation5 Console</p>
+                    <p class="font-semibold text-gray-900 text-sm">PlayStation5 Console - Final Fantasy XVI</p>
+                    <p class="text-lg font-bold mt-2 text-gray-900">$49</p>
+                </div>
+                
+                <div class="related-product-card bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-2-300x300.jpg" alt="Xbox Controller" class="w-40 h-40 object-cover mb-4">
+                    <p class="text-sm text-gray-500 mb-1">Xbox Core Wireless Controller</p>
+                    <p class="font-semibold text-gray-900 text-sm">Xbox Core Wireless Controller - Carbon Block</p>
+                    <p class="text-lg font-bold mt-2 text-gray-900">$69</p>
+                </div>
+               
+                <div class="related-product-card bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-29-300x300.jpg" alt="LG TV" class="w-40 h-40 object-cover mb-4">
+                    <span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full">-48%</span>
+                    <p class="text-sm text-gray-500 mb-1">42-inch Class OLED Evo 4K Processor Smart TV</p>
+                    <p class="font-semibold text-gray-900 text-sm">42-inch Class OLED Evo 4K Processor Smart TV</p>
+                    <div class="mt-2 flex items-center space-x-2">
+                        <p class="text-lg font-bold text-gray-900">$536</p>
+                        <p class="text-sm text-gray-400 line-through">$1099</p>
+                    </div>
+                </div>
+                 
+                <div class="related-product-card bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/furniture-5-300x300.jpg" alt="Coffee Table" class="w-40 h-40 object-cover mb-4">
+                    <p class="text-sm text-gray-500 mb-1">Mid Century Modern Round Dining Table</p>
+                    <p class="font-semibold text-gray-900 text-sm">Mid Century Modern Round Dining Table in Oak</p>
+                    <div class="mt-2 flex items-center space-x-2">
+                        <p class="text-lg font-bold text-gray-900">$569</p>
+                        <p class="text-sm text-gray-400 line-through">$1090</p>
+                    </div>
+                </div>
+                
+                <div class="related-product-card bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-38-300x300.jpg" alt="Spider-Man 2" class="w-40 h-40 object-cover mb-4">
+                    <p class="text-sm text-gray-500 mb-1">PlayStation5 Console</p>
+                    <p class="font-semibold text-gray-900 text-sm">PlayStation5 Console - Marvel's Spider-Man 2 Bundle</p>
+                    <p class="text-lg font-bold mt-2 text-gray-900">$60</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                
+                <div class="mb-4 lg:col-span-1">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/04/logo.png" class="mb-3 w-1/2" alt="Merto Logo">
+                    <ul class="list-none space-y-2">
+                        <li class="text-gray-400">29 SE 2nd Ave, Miami, Florida 33131, United States<br>United States</li>
+                        <li class="text-gray-400">info@example.com</li>
+                        <li class="flex items-center text-white"><i class="fas fa-phone mr-2 text-gray-400"></i> (+92) 3942 7879</li>
+                    </ul>
+                </div>
+    
+                <div class="mb-4">
+                    <h5 class="font-bold text-white mb-3">SHOPPING</h5>
+                    <ul class="list-none space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Wishlist</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Shop by Brand</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Offers</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Track order</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Size Guide</a></li>
+                    </ul>
+                </div>
+    
+                <div class="mb-4">
+                    <h5 class="font-bold text-white mb-3">INFORMATION</h5>
+                    <ul class="list-none space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Track Order</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">About us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Help</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Gift Cards</a></li>
+                    </ul>
+                </div>
+    
+                <div class="mb-4">
+                    <h5 class="font-bold text-white mb-3">ACCOUNT</h5>
+                    <ul class="list-none space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Cart</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">My account</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">My orders</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Wishlist</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Affiliate Program</a></li>
+                    </ul>
+                </div>
+    
+                <div class="mb-4 lg:col-span-1">
+                    <h5 class="font-bold text-white mb-3">Let's keep in touch</h5>
+                    <div class="flex mb-3">
+                        <input type="email" class="flex-grow rounded-l-md px-4 py-2 text-gray-800 focus:outline-none" placeholder="enter your email address">
+                        <button class="bg-white text-gray-800 px-4 py-2 rounded-r-md hover:bg-gray-200 transition">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gray-400 transition"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-gray-400 transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-gray-400 transition"><i class="fab fa-youtube text-xl"></i></a>
+                        <a href="#" class="text-white hover:text-gray-400 transition"><i class="fab fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 my-8">
+    
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center my-8">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-phone-alt text-4xl mb-2 text-gray-400"></i>
+                    <h6 class="font-semibold text-white mb-1">Didn't find what you were looking for?</h6>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a>
+                </div>
+    
+                <div class="flex flex-col items-center">
+                    <i class="far fa-smile text-4xl mb-2 text-gray-400"></i>
+                    <h6 class="font-semibold text-white mb-1">How can we help you today?</h6>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Help Center</a>
+                </div>
+                
+                <div class="flex flex-col items-center">
+                    <i class="far fa-comment-alt text-4xl mb-2 text-gray-400"></i>
+                    <h6 class="font-semibold text-white mb-1">We'd love to hear what you think!</h6>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Give Feedback</a>
+                </div>
+            </div>
+    
+            <hr class="border-gray-700 my-8">
+    
+            <div class="flex flex-col md:flex-row items-center justify-between py-4">
+                <div class="text-center md:text-left mb-3 md:mb-0">
+                    <p class="mb-0">&copy; Copyright Merto. All Rights Reserved</p>
+                </div>
+                <div class="text-center md:text-right">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/04/payment-icons-1.png" alt="Payment Methods" class="w-1/2 mx-auto md:mx-0">
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contents = document.querySelectorAll('.tab-content');
+            const mainImageContainer = document.getElementById('mainImageContainer');
+            const mainProductImage = document.getElementById('mainProductImage');
+            const magnifier = document.getElementById('magnifier');
+            const zoomLevel = 2.5;
+
+            
+            function openTab(tabId) {
+                
+                contents.forEach(content => content.classList.remove('active'));
+                tabs.forEach(tab => tab.classList.remove('active'));
+
+              
+                const activeTabContent = document.getElementById(tabId);
+                const activeTabButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                
+                if (activeTabContent) {
+                    activeTabContent.classList.add('active');
+                }
+                if (activeTabButton) {
+                    activeTabButton.classList.add('active');
+                }
+            }
+            
+         
+            openTab('description');
+
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    openTab(e.target.dataset.tab);
+                });
+            });
+
+           
+            const thumbnails = document.querySelectorAll('.thumbnail-image');
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const newImageSrc = thumb.getAttribute('data-main-image');
+                    mainProductImage.src = newImageSrc;
+                    magnifier.style.backgroundImage = `url(${newImageSrc})`;
+                });
+            });
+
+            
+            mainImageContainer.addEventListener('mousemove', (e) => {
+                const rect = mainImageContainer.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let y = e.clientY - rect.top;
+
+               
+                const magnifierStyle = window.getComputedStyle(magnifier);
+                const magnifierWidth = parseFloat(magnifierStyle.width);
+                const magnifierHeight = parseFloat(magnifierStyle.height);
+                const halfMagnifierWidth = magnifierWidth / 2;
+                const halfMagnifierHeight = magnifierHeight / 2;
+                
+                
+                let clampedX = Math.max(halfMagnifierWidth, Math.min(x, rect.width - halfMagnifierWidth));
+                let clampedY = Math.max(halfMagnifierHeight, Math.min(y, rect.height - halfMagnifierHeight));
+
+                
+                magnifier.style.left = `${clampedX - halfMagnifierWidth}px`;
+                magnifier.style.top = `${clampedY - halfMagnifierHeight}px`;
+
+                
+                const bgX = (x / rect.width) * (mainProductImage.offsetWidth * zoomLevel - magnifierWidth);
+                const bgY = (y / rect.height) * (mainProductImage.offsetHeight * zoomLevel - magnifierHeight);
+
+                magnifier.style.backgroundPosition = `-${bgX}px -${bgY}px`;
+            });
+
+       
+            mainImageContainer.addEventListener('mouseenter', () => {
+                const mainImgSrc = mainProductImage.getAttribute('src');
+                magnifier.style.backgroundImage = `url(${mainImgSrc})`;
+                magnifier.style.display = 'block';
+               
+                magnifier.style.backgroundSize = `${mainProductImage.offsetWidth * zoomLevel}px ${mainProductImage.offsetHeight * zoomLevel}px`;
+            });
+
+            
+            mainImageContainer.addEventListener('mouseleave', () => {
+                magnifier.style.display = 'none';
+            });
+
+           
+            $(document).ready(function(){
+                $(".owl-carousel").owlCarousel({
+                    loop: true,
+                    margin: 20,
+                    nav: true,
+                    navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+                    dots: false,
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        640: {
+                            items: 2
+                        },
+                        1024: {
+                            items: 4
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
