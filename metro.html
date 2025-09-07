@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merto - Home Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2eR+0sP+4k/c/t+6f5zJ28yJ45S3z8S2z+Q=" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color:white;
+            direction: ltr;
+            text-align: left;
+        }
+        .main-hero {
+        
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+        }
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .nav-link.active {
+            color:white !important;
+            font-weight: 600;
+        }
+        .main-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+   
+    <header class="py-3 bg-white border-b shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+                
+            
+                <div class="flex items-center space-x-4">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/themes/merto/images/logo.png" class="w-24 mb-3" alt="Merto Logo">
+                    <div class="hidden lg:block text-sm text-gray-500">
+                        <p class="mb-0">Contact us 24/7</p>
+                        <p class="mb-0 font-medium">(+92) 3942 7879</p>
+                    </div>
+                </div>
+
+            
+                <div class="flex flex-grow w-full lg:w-auto mx-0 lg:mx-4">
+                    <div class="flex w-full border border-gray-300 rounded-lg overflow-hidden">
+                        <select class="px-3 py-2 text-sm text-gray-600 bg-gray-100 border-r-0 focus:outline-none rounded-none">
+                            <option selected>All Categories</option>
+                            <option>Electronics</option>
+                            <option>Fashion</option>
+                            <option>Home Appliances</option>
+                        </select>
+                        <input type="search" class="flex-grow px-4 py-2 text-gray-800 focus:outline-none rounded-none" placeholder="Search...">
+                        <button class="bg-gray-800 text-white px-4 py-2 hover:bg-gray-700 transition duration-200">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+            
+                <div class="flex items-center space-x-4 text-sm text-gray-600">
+                    <div class="relative group">
+                        <a href="#" class="flex items-center hover:text-gray-900 transition">
+                            <img src="https://flagcdn.com/16x12/us.png" alt="English flag" class="mr-1">English
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <div class="relative group">
+                        <a href="#" class="flex items-center hover:text-gray-900 transition">
+                            USD
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </a>
+                    </div>
+                    <a href="#" class="flex items-center hover:text-gray-900 transition">
+                        <i class="fas fa-user-circle text-lg mr-1"></i>
+                        <span class="hidden md:inline">Account</span>
+                    </a>
+                    <a href="#" class="relative hover:text-gray-900 transition">
+                        <i class="far fa-heart text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                    <a href="#" class="relative hover:text-gray-900 transition">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    </div>
+  </div>
+    <nav class="bg-white shadow-sm">
+        <div class="main-container px-4 py-2 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <button class="flex items-center space-x-2 text-sm font-semibold text-gray-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    <span>SHOP BY CATEGORIES</span>
+                </button>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Homepages</a>
+                <a href="Categories.html" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Categories</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Products</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Pages</a>
+                <a href="about.html" class="text-sm text-gray-600 hover:text-gray-900 font-medium">About us</a>
+                <a href="#" class="text-sm text-gray-600 hover:text-gray-900 font-medium">Blog</a>
+                <a href="#" class="text-sm font-semibold text-gray-800">
+                    <svg class="w-5 h-5 text-yellow-500 inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 14.5a6.5 6.5 0 110-13 6.5 6.5 0 010 13zM10 5a.5.5 0 01.5.5v5a.5.5 0 01-1 0v-5A.5.5 0 0110 5z"></path></svg>
+                    <span>Best Discount</span>
+                </a>
+            </div>
+            <div class="flex items-center space-x-2 text-sm text-gray-600">
+                <span>Recently viewed</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+        </div>
+    </nav>
+
+
+    
+   <div class="container mx-auto my-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Main Hero Section with Slider -->
+            <div class="col-span-1 md:col-span-2 relative main-hero rounded-xl overflow-hidden shadow-lg flex items-center p-12">
+                <!-- Main Slider Image -->
+                <div id="carouselExampleIndicators" class="carousel slide w-full" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://raissa.in/cdn/shop/files/Artboard_1.png?v=1727972575&width=1500" class="main-hero-img d-block w-100" alt="Slider 1">
+                            <div class="text-white hero-content p-12 text-left">
+                                <span class="text-lg font-medium bg-black">Up to 40% Off</span>
+                                <h1 class="text-6xl font-extrabold my-4 leading-tight bg-black">Body Lotion spf lab 50+ PA++++</h1>
+                                <button class="mt-4 px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition-colors">Shop Now</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/jpeg;base64,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" class="main-hero-img d-block w-100" alt="Slider 2">
+                            <div class="text-white hero-content p-12 text-left">
+                                <span class="text-lg font-medium bg-black">New Arrivals</span>
+                                <h1 class="text-6xl font-extrabold my-4 leading-tight bg-black">Stylish Summer Collection</h1>
+                                <button class="mt-4 px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition-colors">Shop Now</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="data:image/png;base64,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" class="main-hero-img d-block w-100" alt="Slider 3">
+                            <div class="text-white hero-content p-12 text-left">
+                                <span class="text-lg font-mediumbg-black">Limited Edition</span>
+                                <h1 class="text-6xl font-extrabold my-4 leading-tight bg-black">Luxury Perfume Set</h1>
+                                <button class="mt-4 px-6 py-3 bg-white text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition-colors">Shop Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Banners -->
+            <div class="col-span-1 grid grid-rows-2 gap-6">
+                <!-- Top Banner -->
+                <div class="relative bg-white rounded-xl overflow-hidden shadow-lg p-6 flex flex-col justify-end">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/cosmetic-23-300x300.jpg" class="w-full h-full object-cover absolute top-0 left-0" alt="Special Offer">
+                    <div class="absolute top-0 left-0 w-full h-full bg-black opacity-10"></div>
+                    <div class="relative text-white z-10 text-left">
+                        <span class="block text-red-500 font-bold mb-1">White Friday</span>
+                        <h2 class="text-3xl font-bold leading-tight">Big discount on eyeshadows</h2>
+                        <p class="text-sm">+100 items</p>
+                        <button class="mt-4 px-6 py-2 bg-white text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition-colors">Shop Now</button>
+                    </div>
+                </div>
+                <!-- Bottom Banner -->
+                <div class="relative bg-white rounded-xl overflow-hidden shadow-lg p-6 flex flex-col justify-end">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-1-300x300.jpg" class="w-full h-full object-cover absolute top-0 left-0" alt="New Offer">
+                    <div class="absolute top-0 left-0 w-full h-full bg-black opacity-10"></div>
+                    <div class="relative text-white z-10 text-left">
+                        <span class="block text-red-500 font-bold mb-1">New Collection</span>
+                        <h2 class="text-3xl font-bold leading-tight">Puffer jacket with 30% off</h2>
+                        <p class="text-sm">Best jacket this year</p>
+                        <button class="mt-4 px-6 py-2 bg-white text-gray-800 font-semibold rounded-lg shadow-md hover:bg-gray-100 transition-colors">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="my-12 py-6 px-4 bg-white rounded-xl shadow-md flex justify-around items-center text-center text-gray-600">
+            <div class="flex flex-col items-center">
+                <i class="fas fa-truck text-3xl mb-2"></i>
+                <h4 class="font-bold">Fast, Free Shipping</h4>
+                <p class="text-sm">On order over $50</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-calendar-alt text-3xl mb-2"></i>
+                <h4 class="font-bold">Next Day Delivery</h4>
+                <p class="text-sm">Free- spend over $99</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-hand-holding-usd text-3xl mb-2"></i>
+                <h4 class="font-bold">Low Price Guarantee</h4>
+                <p class="text-sm">We offer competitive prices</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <i class="fas fa-shield-alt text-3xl mb-2"></i>
+                <h4 class="font-bold">Quality Guarantee</h4>
+                <p class="text-sm">We Guarantee Our Products</p>
+            </div>
+        </div>
+
+        <!-- Categories Section -->
+        <div class="my-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Shop by Categories</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 text-center">
+                <div class="flex flex-col items-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/furniture-14-300x300.jpg" class="w-24 h-24 rounded-full mb-2">
+                    <p class="text-sm font-semibold text-gray-700">Home & Decor</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/cosmetics-33-300x300.jpg" class="w-24 h-24 rounded-full mb-2">
+                    <p class="text-sm font-semibold text-gray-700">Makeup</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/autopart-4-300x300.jpg" class="w-24 h-24 rounded-full mb-2">
+                    <p class="text-sm font-semibold text-gray-700">Autopart</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-30-6-300x300.jpg" class="w-24 h-24 rounded-full mb-2">
+                    <p class="text-sm font-semibold text-gray-700">Laptop & Computer</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-19-300x300.jpg" class="w-24 h-24 rounded-full mb-2">
+                    <p class="text-sm font-semibold text-gray-700">Fashion</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-19-1-300x300.jpg" class="w-24 h-24 rounded-full mb-2">
+                    <p class="text-sm font-semibold text-gray-700">Headphones</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="data:image/jpeg;base64,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" class="w-24 h-24 rounded-full mb-2">
+                    <p class="text-sm font-semibold text-gray-700">Handbags</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-9-300x300.jpg" class="w-24 h-24 rounded-full mb-2">
+                    <p class="text-sm font-semibold text-gray-700">Smartphone</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Discount Bar -->
+        <div class="my-12 p-4 bg-white rounded-xl shadow-md text-center">
+            <p class="text-gray-800">Super discount for your first purchase <span class="text-red-500 font-bold">COUPON25</span> Use discount code in the checkout!</p>
+        </div>
+
+        <!-- Flash Deals Section -->
+        <div class="my-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">Flash Deals</h2>
+                <div class="flex items-center space-x-2 text-gray-600">
+                    <span>Ends in</span>
+                    <div class="bg-gray-800 text-white p-2 rounded-lg">03</div>
+                    <div class="bg-gray-800 text-white p-2 rounded-lg">40</div>
+                    <div class="bg-gray-800 text-white p-2 rounded-lg">37</div>
+                </div>
+                <a href="#" class="text-gray-600 hover:text-gray-800 font-semibold">See All Products</a>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Flash Deal Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">-35%</span>
+                    <div class="relative">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-30-6-300x300.jpg" alt="MacBook Pro" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">MacBook Pro 13"</h3>
+                        <p class="text-gray-500 text-sm">Apple</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$999</span>
+                            <span class="text-sm text-gray-400 line-through">$1500</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flash Deal Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">-8%</span>
+                    <div class="relative">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-14-2-300x300.jpg" alt="Smart Watch" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">Apple Watch Series 8 GPS</h3>
+                        <p class="text-gray-500 text-sm">Apple</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$180</span>
+                            <span class="text-sm text-gray-400 line-through">$195</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flash Deal Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">-6%</span>
+                    <div class="relative">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/automotive-11-300x300.jpg" alt="Fitness Machine" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">TOOLS 24 Low Profile Hydraulic Trolley</h3>
+                        <p class="text-gray-500 text-sm">Generic</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$450</span>
+                            <span class="text-sm text-gray-400 line-through">$480</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flash Deal Card 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">-12%</span>
+                    <div class="relative">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/furniture-6-300x300.jpg" alt="Wall Clock" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">Wall Clock</h3>
+                        <p class="text-gray-500 text-sm">Home/Decor</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$55</span>
+                            <span class="text-sm text-gray-400 line-through">$62</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Flash Deal Card 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">-27%</span>
+                    <div class="relative">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/cosmetic-2-300x300.jpg" alt="Makeup Blender" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">Makeup Blender</h3>
+                        <p class="text-gray-500 text-sm">elf</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$12</span>
+                            <span class="text-sm text-gray-400 line-through">$16</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Arrivals Section -->
+        <div class="my-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">New Arrivals</h2>
+                <div class="flex items-center space-x-4 text-gray-600">
+                    <a href="#" class="font-bold text-gray-800 hover:text-gray-600">Fashion</a>
+                    <a href="#" class="hover:text-gray-800">Phone & Tablet</a>
+                    <a href="#" class="hover:text-gray-800">Home & Decor</a>
+                    <a href="#" class="hover:text-gray-800">Beauty & Health</a>
+                    <a href="#" class="font-semibold text-gray-600 hover:text-gray-800">See All Products</a>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">HOT</span>
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-5-300x300.jpg" alt="Nike Air Max" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">Nike Air Max Uno SYS1M</h3>
+                        <p class="text-gray-500 text-sm">Men Sneaker Shoes</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$148</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-9-300x300.jpg" alt="Sunglasses" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">100% UV Protected Sunglasses For Men</h3>
+                        <p class="text-gray-500 text-sm">Generic</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$123</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-6-300x300.jpg" alt="Denim Skirt" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">LV Women Leather Accent Denim Mini Skirt</h3>
+                        <p class="text-gray-500 text-sm">LV</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$1,390</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-16-300x300.jpg" alt="Holiday Sweater" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">A Different Christmas Knit Holiday Sweater</h3>
+                        <p class="text-gray-500 text-sm">Generic</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$50 - $65</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-1-300x300.jpg" alt="Winter Jacket" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">Winter New Jacket Loose Retro American Campus</h3>
+                        <p class="text-gray-500 text-sm">Generic</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$160</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 6 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-3-300x300.jpg" alt="Winter Hats" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">Winter Hats with top ball Custom Design</h3>
+                        <p class="text-gray-500 text-sm">Generic</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$17</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- New Section added from image metro5.jpg -->
+        <div class="my-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-8 rounded-xl shadow-md">
+                <!-- Left side - Image -->
+                <div class="relative flex items-center justify-center">
+                    <img id="main-product-image" src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-4.jpg" alt="Athletics Embroidered Relaxed Hoodie" class="w-full h-full object-cover rounded-xl shadow-lg">
+                    <div class="absolute -top-4 -right-4 bg-red-500 text-white text-3xl font-bold rounded-full h-16 w-16 flex items-center justify-center shadow-lg transform rotate-12">-30%</div>
+                </div>
+                <!-- Right side - Product details -->
+                <div class="flex flex-col justify-center p-4">
+                    <h2 class="text-4xl font-extrabold text-gray-800">Athletics Embroidered Relaxed Hoodie</h2>
+                    <ul class="list-none my-4 space-y-2 text-gray-600">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> 64% cotton, 36% polyester</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Do not dry clean</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i> Machine wash</li>
+                    </ul>
+                    <div class="flex items-center space-x-2 my-4">
+                        <span class="text-4xl font-bold text-red-500">$89</span>
+                        <span class="text-xl text-gray-400 line-through">$120</span>
+                    </div>
+                    <div class="flex items-center space-x-2 mb-6">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-2-300x300.jpg" class="w-12 h-12 rounded-lg cursor-pointer border-2 border-transparent hover:border-gray-800 transition-colors" data-image-url="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-2-300x300.jpg">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-2-300x300.jpg" class="w-12 h-12 rounded-lg cursor-pointer border-2 border-transparent hover:border-gray-800 transition-colors" data-image-url="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-2-300x300.jpg">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-3-300x300.jpg" class="w-12 h-12 rounded-lg cursor-pointer border-2 border-transparent hover:border-gray-800 transition-colors" data-image-url="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-3-300x300.jpg">
+                        <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-300x300.jpg" class="w-12 h-12 rounded-lg cursor-pointer border-2 border-gray-800 transition-colors" data-image-url="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-15-300x300.jpg">
+                    </div>
+                    <button class="px-8 py-4 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 transition-colors">BUY NOW</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Best Selling Section -->
+        <div class="my-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">Best Selling</h2>
+                <a href="#" class="text-gray-600 hover:text-gray-800 font-semibold">See All Products</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">HOT</span>
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-5-300x300.jpg" alt="Nike Air Max" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">Nike Air Max Uno SYS1M</h3>
+                        <p class="text-gray-500 text-sm">Men Sneaker Shoes</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$148</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">-17%</span>
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/fashion-6-300x300.jpg" alt="LV Denim Skirt" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">LV Women Leather Accent Denim Mini Skirt</h3>
+                        <p class="text-gray-500 text-sm">LV</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$1,390</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">-5%</span>
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/automotive-13-300x300.jpg" alt="High-Performance Carbon Fiber Wheels" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">High-Performance Carbon Fiber Wheels</h3>
+                        <p class="text-gray-500 text-sm">Generic</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$499</span>
+                            <span class="text-sm text-gray-400 line-through">$599</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 4 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">-5%</span>
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/automotive-11-300x300.jpg" alt="Hydraulic Trolley" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">TOOLS 24 Low Profile Hydraulic Trolley</h3>
+                        <p class="text-gray-500 text-sm">Generic</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$767</span>
+                            <span class="text-sm text-gray-400 line-through">$810</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product Card 5 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden relative group">
+                    <div class="relative">
+                        <img src="https://demothemesky-be87.kxcdn.com/merto/wp-content/uploads/2024/05/electronic-1-300x300.jpg"alt="Apple Macbook Air" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="flex flex-col space-y-2">
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-100"><i class="fas fa-heart"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-200"><i class="fas fa-expand-arrows-alt"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-300"><i class="fas fa-search"></i></a>
+                                <a href="#" class="bg-white/90 text-gray-800 p-3 rounded-full hover:bg-white transition-colors duration-300 transform scale-0 group-hover:scale-100 delay-400"><i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-md font-semibold text-gray-800 truncate">Apple Macbook Air with Apple M1 Chip, 8GB RAM, 256GB SSD Storage</h3>
+                        <p class="text-gray-500 text-sm">Apple</p>
+                        <div class="flex items-center text-yellow-500 text-sm mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <span class="text-lg font-bold text-red-500">$572</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Section -->
+        <div class="my-12">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">From Our Blog</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Blog Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/03/blog-1.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-xs font-semibold text-gray-400 uppercase">Beauty & Fashion | By Myoui Mina</div>
+                        <h3 class="text-xl font-bold text-gray-800 my-2">Weekday Outfit Inspiration for All Occasions</h3>
+                        <p class="text-gray-600 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta et nisi et sodales.</p>
+                        <a href="#" class="px-4 py-2 text-gray-800 font-semibold border-2 border-gray-800 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/03/blog-2.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-xs font-semibold text-gray-400 uppercase">Cosmetics | By Myoui Mina</div>
+                        <h3 class="text-xl font-bold text-gray-800 my-2">100% Pure & Natural Sage Essential Oil</h3>
+                        <p class="text-gray-600 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta et nisi et sodales.</p>
+                        <a href="#" class="px-4 py-2 text-gray-800 font-semibold border-2 border-gray-800 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">Read More</a>
+                    </div>
+                </div>
+                <!-- Blog Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="https://merto-be87.kxcdn.com/merto/wp-content/uploads/2024/03/blog-3.jpg" alt="Blog Post" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-xs font-semibold text-gray-400 uppercase">Electronics | By Myoui Mina</div>
+                        <h3 class="text-xl font-bold text-gray-800 my-2">Tips for Cleaning Desktop & Laptop</h3>
+                        <p class="text-gray-600 text-sm mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta et nisi et sodales.</p>
+                        <a href="#" class="px-4 py-2 text-gray-800 font-semibold border-2 border-gray-800 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Looking for Something Else Section -->
+        <div class="my-12 p-8 bg-white rounded-xl shadow-md text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Looking for something else?</h2>
+            <p class="text-gray-600 mb-6">Type and press enter to find what you want</p>
+            <div class="flex items-center justify-center space-x-2">
+                <input type="text" placeholder="Search for products" class="border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-300 w-1/2 md:w-1/3">
+                <button class="px-4 py-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="flex flex-wrap justify-center gap-2 mt-4">
+                <a href="#" class="bg-gray-200 text-gray-700 text-sm px-4 py-2 rounded-full hover:bg-gray-300 transition-colors">Apple Watch</a>
+                <a href="#" class="bg-gray-200 text-gray-700 text-sm px-4 py-2 rounded-full hover:bg-gray-300 transition-colors">Samsung</a>
+                <a href="#" class="bg-gray-200 text-gray-700 text-sm px-4 py-2 rounded-full hover:bg-gray-300 transition-colors">Headphones</a>
+                <a href="#" class="bg-gray-200 text-gray-700 text-sm px-4 py-2 rounded-full hover:bg-gray-300 transition-colors">Laptop</a>
+                <a href="#" class="bg-gray-200 text-gray-700 text-sm px-4 py-2 rounded-full hover:bg-gray-300 transition-colors">Camera</a>
+                <a href="#" class="bg-gray-200 text-gray-700 text-sm px-4 py-2 rounded-full hover:bg-gray-300 transition-colors">Gaming</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Footer Column 1 -->
+            <div>
+                <a class="text-3xl font-bold text-white mb-4 block" href="#">Merto</a>
+                <div class="flex items-center mb-2">
+                    <i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>
+                    <p class="text-sm text-gray-400">29 St. 2nd Ave, Miami Florida 39310, United States</p>
+                </div>
+                <div class="flex items-center mb-2">
+                    <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                    <p class="text-sm text-gray-400">info@example.com</p>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-phone mr-2 text-gray-400"></i>
+                    <p class="text-sm text-gray-400">(+92) 3942 7679</p>
+                </div>
+            </div>
+
+            <!-- Footer Column 2 - Shopping -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">SHOPPING</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Wishlist</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Shop by Brand</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Offers</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 3 - Information -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">INFORMATION</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Shipping & Returns</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">About us</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Help</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Gift Cards</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 4 - Account -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">ACCOUNT</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Cart</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">My account</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">My orders</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Wishlist</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Affiliate Program</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 5 - Let's keep in touch -->
+            <div>
+                <h4 class="text-lg font-bold mb-4">Let's keep in touch</h4>
+                <p class="text-sm text-gray-400 mb-4">enter your email address</p>
+                <div class="flex">
+                    <input type="email" placeholder="enter your email address" class="bg-gray-700 text-white rounded-l-lg p-2 focus:outline-none focus:ring-2 focus:ring-gray-600 w-full">
+                    <button class="bg-gray-600 text-white p-2 rounded-r-lg hover:bg-gray-500 transition-colors">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="flex space-x-4 mt-4">
+                    <a href="#" class="text-white hover:text-gray-400 transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-gray-400 transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-gray-400 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-white hover:text-gray-400 transition-colors"><i class="fab fa-youtube text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Footer -->
+        <div class="container mx-auto mt-12 pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+                <div class="flex items-center flex-col md:flex-row">
+                    <i class="fas fa-question-circle text-2xl mr-2"></i>
+                    <div class="text-center md:text-left">
+                        <p class="font-semibold">Didn't find what you were looking for?</p>
+                        <p>Contact us</p>
+                    </div>
+                </div>
+                <div class="flex items-center flex-col md:flex-row">
+                    <i class="fas fa-headset text-2xl mr-2"></i>
+                    <div class="text-center md:text-left">
+                        <p class="font-semibold">How can we help you today?</p>
+                        <p>Help center</p>
+                    </div>
+                </div>
+                <div class="flex items-center flex-col md:flex-row">
+                    <i class="fas fa-comment-dots text-2xl mr-2"></i>
+                    <div class="text-center md:text-left">
+                        <p class="font-semibold">We'd love to hear what you think!</p>
+                        <p>Give Feedback</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="bg-gray-900 text-gray-400 py-4 text-center text-xs">
+        <p>Copyright © Merto. All Rights Reserved</p>
+        <div class="flex justify-center mt-2 space-x-2">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=PayPal" alt="PayPal">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=Visa" alt="Visa">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=Mastercard" alt="Mastercard">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=JCB" alt="JCB">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=Discover" alt="Discover">
+            <img src="https://placehold.co/50x20/ffffff/000000?text=American" alt="American Express">
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainImage = document.getElementById('main-product-image');
+            const colorOptions = document.querySelectorAll('.flex.items-center.space-x-2.mb-6 img');
+
+            colorOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const imageUrl = option.getAttribute('data-image-url');
+                    mainImage.src = imageUrl;
+
+                    // Remove active border from all images
+                    colorOptions.forEach(img => {
+                        img.classList.remove('border-gray-800');
+                        img.classList.add('border-transparent');
+                    });
+
+                    // Add active border to the clicked image
+                    option.classList.remove('border-transparent');
+                    option.classList.add('border-gray-800');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
